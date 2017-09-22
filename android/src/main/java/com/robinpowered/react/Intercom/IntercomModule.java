@@ -19,6 +19,7 @@ import java.util.Map;
 import javax.annotation.Nullable;
 
 import io.intercom.android.sdk.Intercom;
+import io.intercom.android.sdk.UserAttributes;
 import io.intercom.android.sdk.identity.Registration;
 import io.intercom.android.sdk.push.IntercomPushClient;
 
