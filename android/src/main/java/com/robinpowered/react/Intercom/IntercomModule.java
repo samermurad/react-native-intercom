@@ -89,7 +89,11 @@ public class IntercomModule extends ReactContextBaseJavaModule {
     public void updateUser(ReadableMap options, Callback callback) {
         try {
             Map<String, Object> map = recursivelyDeconstructReadableMap(options);
-            Intercom.client().updateUser(map);
+            UserAttributes.Builder builder = new UserAttributes.Builder();
+            builder.withEmail((String) map.get("email"));
+            builder.withName((String) map.get("name"));
+            UserAttributes userAttributes = builder.build();
+            Intercom.client().updateUser(userAttributes);
             Log.i(TAG, "updateUser");
             callback.invoke(null, null);
         } catch (Exception e) {
@@ -154,7 +158,7 @@ public class IntercomModule extends ReactContextBaseJavaModule {
 
     @ReactMethod
     public void setHMAC(String hmac, String data, Callback callback) {
-        Intercom.client().setSecureMode(hmac, data);
+//        Intercom.client().setSecureMode(hmac, data);
         callback.invoke(null, null);
     }
 
